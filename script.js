@@ -27,10 +27,8 @@ const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', () => {
     if (window.scrollY > 20) {
         navbar.classList.add('shadow-lg', 'shadow-black/20');
-        navbar.style.background = 'rgba(15, 23, 42, 0.9)';
     } else {
         navbar.classList.remove('shadow-lg', 'shadow-black/20');
-        navbar.style.background = 'rgba(15, 23, 42, 0.7)';
     }
 });
 
