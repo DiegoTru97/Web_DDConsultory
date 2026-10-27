@@ -11,7 +11,7 @@
     <meta property="og:image" content="https://ddconsultory.netlify.app/Recursos/ProfileDD.jpeg">
     <meta property="og:url" content="https://ddconsultory.netlify.app/">
     <meta property="og:type" content="website">
-    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="icon" type="image/png" href="faviconDark.png">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -89,7 +89,9 @@
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center gap-2.5 cursor-pointer group" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })">
                     <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-darker font-bold shadow-md shadow-primary/20 group-hover:scale-105 transition-transform">
-                        <i class="ph-bold ph-terminal-window text-xl"></i>
+                        <svg aria-hidden="true" class="w-7 h-7" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M32 22L15 50L32 78M68 22L85 50L68 78M58 14L42 86" stroke="currentColor" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
                     </div>
                     <div>
                         <span class="font-extrabold text-xl tracking-tight text-slate-900 dark:text-white">DD<span class="text-gradient-emerald">Consultory</span></span>
@@ -896,12 +898,22 @@
     <script>
         (function() {
             const html = document.documentElement;
+            const favicon = document.querySelector('link[rel="icon"]');
             const toggleBtns = [document.getElementById('theme-toggle'), document.getElementById('theme-toggle-mobile')];
+
+            const updateFavicon = () => {
+                if (favicon) {
+                    favicon.href = html.classList.contains('dark') ? 'faviconDark.png' : 'faviconWhite.png';
+                }
+            };
+
+            updateFavicon();
             
             toggleBtns.forEach(btn => {
                 if (btn) {
                     btn.addEventListener('click', () => {
                         html.classList.toggle('dark');
+                        updateFavicon();
                     });
                 }
             });
